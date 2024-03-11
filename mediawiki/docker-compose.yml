@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  memcached:
+    build:
+      context: ./memcached
+    networks:
+      - mediawiki-network
+
+  mariadb:
+    build:
+      context: ./mariadb
+    networks:
+      - mediawiki-network
+
+  php:
+    build:
+      context: ./php
+    depends_on:
+      - memcached
+      - mariadb      
+    networks:
+      - mediawiki-network
+
+  nginx:
+    build:
+      context: ./nginx
+    ports:
+      - "8080:80"
+    networks:
+      - mediawiki-network
+    depends_on:
+      - php
+    restart: always
+
+networks:
+  mediawiki-network:
