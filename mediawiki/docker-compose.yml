@@ -18,9 +18,11 @@ services:
       context: ./php
     depends_on:
       - memcached
-      - mariadb      
+      - mariadb
     networks:
       - mediawiki-network
+    volumes:
+      - /app:/app
 
   nginx:
     build:
@@ -29,9 +31,13 @@ services:
       - "8080:80"
     networks:
       - mediawiki-network
+    volumes:
+      - /app:/app
     depends_on:
       - php
-    restart: always
 
 networks:
   mediawiki-network:
+
+volumes:
+  mediawiki-data:
