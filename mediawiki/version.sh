@@ -1,0 +1,3 @@
+#!/bin/bash
+MEDIAWIKI_VS="1.42"
+MEDIAWIKI_VF="${MEDIAWIKI_VS}.1"

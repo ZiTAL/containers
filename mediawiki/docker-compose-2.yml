@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  data:
+    build:
+      context: ./data
+      args:
+        MVS: ${MVS}
+        MVF: ${MVF}
+
+    networks:
+      - mediawiki-network
+    volumes:
+      - "mediawiki-volume-${MVF}:/app"
+
+networks:
+  mediawiki-network:
+
+volumes:
+  mediawiki-volume-${MVF}:

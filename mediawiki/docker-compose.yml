@@ -1,6 +1,15 @@
 version: '3.8'
 
 services:
+
+  data:
+    build:
+      context: ./data
+    networks:
+      - mediawiki-network
+    volumes:
+      - mediawiki-data:/app
+
   memcached:
     build:
       context: ./memcached
@@ -17,12 +26,13 @@ services:
     build:
       context: ./php
     depends_on:
+      - data
       - memcached
       - mariadb
     networks:
       - mediawiki-network
     volumes:
-      - /app:/app
+      - mediawiki-data:/app
 
   nginx:
     build:
@@ -32,8 +42,9 @@ services:
     networks:
       - mediawiki-network
     volumes:
-      - /app:/app
+      - mediawiki-data:/app
     depends_on:
+      - data
       - php
 
 networks:
