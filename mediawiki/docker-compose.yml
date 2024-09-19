@@ -5,10 +5,14 @@ services:
   data:
     build:
       context: ./data
+      args:
+        MVS: ${MVS}
+        MVF: ${MVF}
+
     networks:
       - mediawiki-network
     volumes:
-      - mediawiki-data:/app
+      - "mediawiki-volume-${MVF}:/app"
 
   memcached:
     build:
@@ -19,6 +23,9 @@ services:
   mariadb:
     build:
       context: ./mariadb
+    environment:
+      - MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=yes
+
     networks:
       - mediawiki-network
 
@@ -31,18 +38,19 @@ services:
       - mariadb
     networks:
       - mediawiki-network
+
     volumes:
-      - mediawiki-data:/app
+      - "mediawiki-volume-${MVF}:/app"
 
   nginx:
     build:
       context: ./nginx
     ports:
-      - "8080:80"
+      - "8081:80"
     networks:
       - mediawiki-network
     volumes:
-      - mediawiki-data:/app
+      - "mediawiki-volume-${MVF}:/app"
     depends_on:
       - data
       - php
@@ -51,4 +59,4 @@ networks:
   mediawiki-network:
 
 volumes:
-  mediawiki-data:
+  mediawiki-volume-${MVF}:

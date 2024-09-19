@@ -1,4 +1,4 @@
 #!/bin/bash
-source version.sh
-podman image rm localhost/mediawiki_data
-podman volume rm mediawiki-volume-${MEDIAWIKI_VF}
+source env.sh
+${COMMAND} volume rm -af
+${COMMAND} image rm -af

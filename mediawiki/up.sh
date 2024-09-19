@@ -1,5 +1,3 @@
 #!/bin/bash
-FILE="docker-compose.yml"
-COMMAND="podman-compose"
-
-${COMMAND} -f ${FILE} up
+source env.sh
+MVS=${MEDIAWIKI_VS} MVF=${MEDIAWIKI_VF} ${COMMAND_COMPOSE} -f ${CONFIG_FILE} up -d

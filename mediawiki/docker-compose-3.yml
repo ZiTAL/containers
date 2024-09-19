@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+
+  php:
+    build:
+      context: ./php
+    depends_on:
+      - data
+      - memcached
+      - mariadb
+    networks:
+      - mediawiki-network
+
+    volumes:
+      - "mediawiki-volume-${MVF}:/app"
+
+networks:
+  mediawiki-network:
+
+volumes:
+  mediawiki-volume-${MVF}:

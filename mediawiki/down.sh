@@ -1,5 +1,4 @@
 #!/bin/bash
-FILE="docker-compose.yml"
-COMMAND="podman-compose"
+source env.sh
 
-${COMMAND} -f ${FILE} down
+${COMMAND_COMPOSE} -f ${CONFIG_FILE} down
