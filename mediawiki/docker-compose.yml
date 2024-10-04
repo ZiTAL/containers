@@ -3,6 +3,7 @@ version: '3.8'
 services:
 
   data:
+    container_name: "mediawiki-data-${MVF}"
     build:
       context: ./data
       args:
@@ -15,12 +16,14 @@ services:
       - "mediawiki-volume-${MVF}:/app"
 
   memcached:
+    container_name: "mediawiki-memcached-${MVF}"
     build:
       context: ./memcached
     networks:
       - mediawiki-network
 
   mariadb:
+    container_name: "mediawiki-mariadb-${MVF}"
     build:
       context: ./mariadb
     environment:
@@ -30,6 +33,7 @@ services:
       - mediawiki-network
 
   php:
+    container_name: "mediawiki-php-${MVF}"
     build:
       context: ./php
     depends_on:
@@ -43,6 +47,7 @@ services:
       - "mediawiki-volume-${MVF}:/app"
 
   nginx:
+    container_name: "mediawiki-nginx-${MVF}"
     build:
       context: ./nginx
     ports:
