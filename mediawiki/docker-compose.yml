@@ -3,37 +3,35 @@ version: '3.8'
 services:
 
   data:
-    container_name: "mediawiki-data-${MVF}"
+    container_name: "${NAME}-data-${MVF}"
     build:
       context: ./data
       args:
         MVS: ${MVS}
         MVF: ${MVF}
-
     networks:
-      - mediawiki-network
+      - "mediawiki-network"
     volumes:
-      - "mediawiki-volume-${MVF}:/app"
+      - "${NAME}-volume-${MVF}:/app"
 
   memcached:
-    container_name: "mediawiki-memcached-${MVF}"
+    container_name: "${NAME}-memcached-${MVF}"
     build:
       context: ./memcached
     networks:
-      - mediawiki-network
+      - "mediawiki-network"
 
   mariadb:
-    container_name: "mediawiki-mariadb-${MVF}"
+    container_name: "${NAME}-mariadb-${MVF}"
     build:
       context: ./mariadb
     environment:
       - MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=yes
-
     networks:
-      - mediawiki-network
+      - "mediawiki-network"
 
   php:
-    container_name: "mediawiki-php-${MVF}"
+    container_name: "${NAME}-php-${MVF}"
     build:
       context: ./php
     depends_on:
@@ -41,21 +39,20 @@ services:
       - memcached
       - mariadb
     networks:
-      - mediawiki-network
-
+      - "mediawiki-network"
     volumes:
-      - "mediawiki-volume-${MVF}:/app"
+      - "${NAME}-volume-${MVF}:/app"
 
   nginx:
-    container_name: "mediawiki-nginx-${MVF}"
+    container_name: "${NAME}-nginx-${MVF}"
     build:
       context: ./nginx
     ports:
-      - "8081:80"
+      - "${PORT}:80"
     networks:
-      - mediawiki-network
+      - "mediawiki-network"
     volumes:
-      - "mediawiki-volume-${MVF}:/app"
+      - "${NAME}-volume-${MVF}:/app"
     depends_on:
       - data
       - php
@@ -64,4 +61,4 @@ networks:
   mediawiki-network:
 
 volumes:
-  mediawiki-volume-${MVF}:
+  ${NAME}-volume-${MVF}:
