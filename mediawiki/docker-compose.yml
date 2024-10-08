@@ -1,4 +1,4 @@
-version: '3.8'
+#version: '3.8'
 
 services:
 
@@ -12,7 +12,7 @@ services:
     networks:
       - "mediawiki-network"
     volumes:
-      - "${NAME}-volume-${MVF}:/app"
+      - "volume-${MVF}:/app"
 
   memcached:
     container_name: "${NAME}-memcached-${MVF}"
@@ -41,7 +41,7 @@ services:
     networks:
       - "mediawiki-network"
     volumes:
-      - "${NAME}-volume-${MVF}:/app"
+      - "volume-${MVF}:/app"
 
   nginx:
     container_name: "${NAME}-nginx-${MVF}"
@@ -52,7 +52,7 @@ services:
     networks:
       - "mediawiki-network"
     volumes:
-      - "${NAME}-volume-${MVF}:/app"
+      - "volume-${MVF}:/app"
     depends_on:
       - data
       - php
@@ -61,4 +61,4 @@ networks:
   mediawiki-network:
 
 volumes:
-  ${NAME}-volume-${MVF}:
+  volume-${MVF}:

@@ -1,4 +1,3 @@
 #!/bin/bash
 source env.sh
-
-${COMMAND_COMPOSE} -f ${CONFIG_FILE} down
+NAME=${NAME} PORT=${PORT} MVS=${MEDIAWIKI_VS} MVF=${MEDIAWIKI_VF} ${COMMAND_COMPOSE} -f ${CONFIG_FILE} down
