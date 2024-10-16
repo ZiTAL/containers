@@ -9,7 +9,7 @@ LAST_BACKUP="${BACKUP_DIR}/`ls -r1 ${BACKUP_DIR} | grep .sql$ | head -n 1`"
 LAST_HASH=`md5sum $LAST_BACKUP | awk '{print $1}'`
 
 TMP_BACKUP="${BACKUP_DIR}/tmp.sql"
-TARGET_BACKUP="${BACKUP_DIR}/${DB}-${DATE}.sql"
+TARGET_BACKUP="${BACKUP_DIR}/${NAME}-${DATE}.sql"
 
 ${COMMAND} exec -it ${CONTAINER} mariadb-dump --databases ${NAME} --add-drop-database --routines --triggers --user=root > ${TMP_BACKUP}
 CURRENT_HASH=`md5sum ${TMP_BACKUP} | awk '{print $1}'`
