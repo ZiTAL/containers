@@ -40,8 +40,8 @@ $wgResourceBasePath = $wgScriptPath;
 ## The URL paths to the logo.  Make sure you change this from the default,
 ## or else you'll overwrite your logo when you upgrade!
 $wgLogos = [
-	'1x' => "$wgResourceBasePath/resources/assets/bermeo.svg",
-	'icon' => "$wgResourceBasePath/resources/assets/bermeo.svg",
+	'1x'   => "$wgResourceBasePath/resources/assets/logo.svg",
+	'icon' => "$wgResourceBasePath/resources/assets/logo.svg",
 ];
 
 ## UPO means: this is also a user preference option
@@ -64,15 +64,15 @@ $wgDBuser     = 'root';
 $wgDBpassword = '';
 
 # MySQL specific settings
-$wgDBprefix = "";
+$wgDBprefix = '';
 $wgDBssl    = false;
 
 # MySQL table options to use during installation or update
-$wgDBTableOptions = "ENGINE=InnoDB, DEFAULT CHARSET=binary";
+$wgDBTableOptions = 'ENGINE=InnoDB, DEFAULT CHARSET=binary';
 
 # Shared database table
 # This has no effect unless $wgSharedDB is also set.
-$wgSharedTables[] = "actor";
+$wgSharedTables[] = 'actor';
 
 ## Shared memory settings
 $wgMainCacheType    = CACHE_MEMCACHED;
@@ -101,7 +101,7 @@ $wgLocaltimezone = 'UTC';
 ## Set $wgCacheDirectory to a writable directory on the web server
 ## to make your wiki go slightly faster. The directory should not
 ## be publicly accessible from the web.
-#$wgCacheDirectory = "$IP/cache";
+#$wgCacheDirectory = "{$IP}/cache";
 $wgSecretKey       = '56f9b651be027850136fb151384ab589b225d048e0fe59ecf084289a5974e331';
 
 # Changing this will log out all existing sessions.
@@ -114,7 +114,7 @@ $wgUpgradeKey = 'a344612897c7f258';
 ## For attaching licensing metadata to pages, and displaying an
 ## appropriate copyright notice / icon. GNU Free Documentation
 ## License and Creative Commons licenses are supported so far.
-$wgRightsPage = ""; # Set to the title of a wiki page that describes your license/copyright
+$wgRightsPage = ''; # Set to the title of a wiki page that describes your license/copyright
 $wgRightsUrl  = 'https://creativecommons.org/licenses/by/4.0/';
 $wgRightsText = 'Creative Commons Attribution';
 $wgRightsIcon = "$wgResourceBasePath/resources/assets/licenses/cc-by.png";
@@ -153,4 +153,3 @@ $wgEnableWriteAPI = false;
 
 # End of automatically generated settings.
 # Add more configuration options below.
-
