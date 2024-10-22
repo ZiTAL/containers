@@ -9,7 +9,8 @@ echo "Restore Database:"
 echo ""
 echo "Last backup: ${LAST_BACKUP}"
 
-${COMMAND} exec ${CONTAINER} mariadb --user=root < ${LAST_BACKUP}
+${COMMAND} exec -i ${CONTAINER} mariadb -u root -e "DROP DATABASE ${NAME};"
+${COMMAND} exec -i ${CONTAINER} mariadb -u root < ${LAST_BACKUP}
 
 echo "Done."
 
