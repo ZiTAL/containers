@@ -8,8 +8,9 @@ services:
     build:
       context: ./data
       args:
-        MVS: ${MVS}
-        MVF: ${MVF}
+        MVS:  ${MVS}
+        MVF:  ${MVF}
+        MEXT: ${MEXT}
     networks:
       - "mediawiki-network"
     volumes:

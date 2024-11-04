@@ -138,7 +138,17 @@ wfLoadSkin( 'Vector' );
 
 //$wgDefaultSkin = 'timeless';
 //$wgDefaultSkin = 'minerva';
-$wgDefaultSkin = 'vector';
+//$wgDefaultSkin = 'monobook';
+$wgDefaultSkin = 'vector-2022';
+
+// responsive
+wfLoadExtension( 'MobileFrontend' );
+//$wgDefaultMobileSkin = 'timeless';
+//$wgDefaultMobileSkin = 'minerva';
+//$wgDefaultMobileSkin = 'monobook';
+$wgDefaultMobileSkin = 'vector-2022';
+
+
 
 # Enabled extensions. Most of the extensions are enabled by adding
 # wfLoadExtension( 'ExtensionName' );

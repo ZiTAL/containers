@@ -1,3 +1,3 @@
 #!/bin/bash
 source env.sh
-${COMMAND} exec -it mediawiki_php_1 /bin/sh
+${COMMAND} exec -it $1 /bin/sh
