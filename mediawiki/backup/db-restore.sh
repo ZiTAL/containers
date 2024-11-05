@@ -1,9 +1,12 @@
 #!/bin/bash
-source env.sh
+SCRIPT_PATH="$(cd "$(dirname "$0")" && pwd)"
+SOURCE_DIR="${SCRIPT_PATH}/.."
+source ${SOURCE_DIR}/env.sh
+
 CONTAINER="${NAME}-mariadb-${MEDIAWIKI_VF}"
 DATE=`date +%Y-%m-%d--%H-%M-%S`
-BACKUP_DIR="backup/db"
-LAST_BACKUP="${BACKUP_DIR}/`ls -r1 ${BACKUP_DIR} | grep .sql$ | head -n 1`"
+BACKUP_DIR="${SCRIPT_PATH}/db"
+LAST_BACKUP="${BACKUP_DIR}/`ls -r1 ${BACKUP_DIR} | grep -E '.sql$' | head -n 1`"
 
 echo "Restore Database:"
 echo ""

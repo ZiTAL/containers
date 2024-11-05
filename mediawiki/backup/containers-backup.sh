@@ -1,6 +1,8 @@
 #!/bin/bash
-source env.sh
-BACKUP_DIR="backup/containers"
+SCRIPT_PATH="$(cd "$(dirname "$0")" && pwd)"
+SOURCE_DIR="${SCRIPT_PATH}/.."
+source ${SOURCE_DIR}/env.sh
+BACKUP_DIR="${SCRIPT_PATH}/containers"
 
 echo "Backup containers:"
 echo ""
