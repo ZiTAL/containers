@@ -10,11 +10,13 @@ MEDIAWIKI_VF="1.42.3"
 ```
 
 ## build
+
 ```
 bash build.sh
 ```
 
 ## up
+
 ```
 bash up.sh
 ```
@@ -26,18 +28,23 @@ podman ps -a
 ```
 
 ## stop
+
 ```
 bash stop.sh
 ```
 
 ## down
+
 - removes containers
+
 ```
 bash down.sh
 ``` 
 
 ## rm
+
 - removes containers, images and volumes
+
 ```
 bash rm.sh
 ```
@@ -62,9 +69,6 @@ to set the restore a certain file, first you need to touch it, else it will rest
 
 ```
 touch backup/db/mediawiki-2024-10-22--14-51-26.sql
-```
-
-```
 touch backup/images/images-2024-11-04--15-38-30.zip
 ```
 
@@ -72,7 +76,7 @@ touch backup/images/images-2024-11-04--15-38-30.zip
 
 ```
 cd backup
-bash db-backup.sh
+bash db-restore.sh
 ```
 
 ## images
