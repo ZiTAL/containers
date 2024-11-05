@@ -5,10 +5,10 @@ source ${SOURCE_DIR}/env.sh
 
 CONTAINER="${NAME}-data-${MEDIAWIKI_VF}"
 BACKUP_DIR="${SCRIPT_PATH}/images"
-LAST_FILE="`ls -r1 ${BACKUP_DIR} | grep -E '.zip$' | head -n 1`"
+LAST_FILE="`ls -t1 ${BACKUP_DIR} | grep -E '.zip$' | head -n 1`"
 LAST_BACKUP="${BACKUP_DIR}/${LAST_FILE}"
 
-read -p "Are you sure to restore this backup ${LAST_FILE}? y/n: " input
+read -p "Are you sure to restore this backup ${LAST_FILE} ? y/n: " input
 
 if [[ "$input" != "y" ]]; then
     echo "Aborted"
