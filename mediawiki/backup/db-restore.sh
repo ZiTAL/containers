@@ -21,7 +21,7 @@ if [[ "$input" != "y" ]]; then
     exit 0
 fi
 
-${COMMAND} exec -i ${CONTAINER} mariadb -u root -e "DROP DATABASE ${NAME};"
+${COMMAND} exec -i ${CONTAINER} mariadb -u root -e "DROP DATABASE IF EXISTS ${NAME};"
 ${COMMAND} exec -i ${CONTAINER} mariadb -u root < ${LAST_BACKUP}
 
 echo "Done."
