@@ -1,0 +1,87 @@
+<icecast>
+    <location>City</location>
+    <admin>mail@mail.net</admin>
+
+    <limits>
+        <clients>100</clients>
+        <sources>2</sources>
+        <queue-size>524288</queue-size>
+        <client-timeout>30</client-timeout>
+        <header-timeout>15</header-timeout>
+        <source-timeout>10</source-timeout>
+        <!-- If enabled, this will provide a burst of data when a client 
+             first connects, thereby significantly reducing the startup 
+             time for listeners that do substantial buffering. However,
+             it also significantly increases latency between the source
+             client and listening client.  For low-latency setups, you
+             might want to disable this. -->
+        <burst-on-connect>1</burst-on-connect>
+        <!-- same as burst-on-connect, but this allows for being more
+             specific on how much to burst. Most people won't need to
+             change from the default 64k. Applies to all mountpoints  -->
+        <burst-size>65536</burst-size>
+    </limits>
+
+    <authentication>
+        <!-- Sources log in with username 'source' -->
+        <source-password>12345</source-password>
+        <!-- Relays log in with username 'relay' -->
+        <relay-password>12345</relay-password>
+
+        <!-- Admin logs in with the username given below -->
+        <admin-user>admin</admin-user>
+        <admin-password>12345</admin-password>
+    </authentication>
+
+    <hostname>localhost</hostname>
+
+    <!-- You may have multiple <listen-socket> elements -->
+    <listen-socket>
+        <port>8000</port>
+    </listen-socket>
+
+    <http-headers>
+        <header name="Access-Control-Allow-Origin" value="*" />
+    </http-headers>
+
+    <mount>
+        <mount-name>/stream.mp3</mount-name>
+        <password>12345</password>
+        <content-type>audio/mpeg</content-type>
+    </mount>
+
+    <mount>
+        <mount-name>/stream.ogg</mount-name>
+        <password>12345</password>
+        <content-type>audio/ogg</content-type>
+    </mount>
+
+    <fileserve>1</fileserve>
+
+    <paths>
+        <!-- basedir is only used if chroot is enabled -->
+        <basedir>/usr/share/icecast2</basedir>
+
+        <!-- Note that if <chroot> is turned on below, these paths must both
+             be relative to the new root, not the original root -->
+
+        <logdir>/var/log/icecast</logdir>
+        <webroot>/usr/share/icecast/web</webroot>
+
+        <alias source="http://localhost:8000/stream.mp3" destination="https://localhost/stream.mp3" />
+        <alias source="http://localhost:8000/stream.ogg" destination="https://localhost/stream.ogg" />
+
+        <alias source="/" destination="/status.xsl"/>
+    </paths>
+
+    <logging>
+        <accesslog>access.log</accesslog>
+        <errorlog>error.log</errorlog>
+        <loglevel>3</loglevel> <!-- 4 Debug, 3 Info, 2 Warn, 1 Error -->
+        <logsize>10000</logsize> <!-- Max size of a logfile -->
+    </logging>
+
+    <security>
+        <chroot>0</chroot>
+    </security>
+</icecast>
