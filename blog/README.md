@@ -49,3 +49,32 @@ blog.zital.eus {
     reverse_proxy http://blog.opi5:8000
 }
 ```
+
+# SYSTEMD
+**/etc/systemd/system/blog.service**
+
+```
+[Unit]
+Description=blog
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=pi
+Group=pi
+Restart=on-failure
+RestartSec=5
+
+WorkingDirectory=/home/projects/containers/blog
+ExecStart=/home/projects/containers/blog/up.sh
+ExecStop=/home/projects/containers/blog/stop.sh
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```
+systemctl daemon-reload
+systemctl enable blog
+systemctl start blog
+```
