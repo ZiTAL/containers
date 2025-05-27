@@ -34,5 +34,18 @@ podman-compose stop
 # IMPORT SQL
 podman exec -i CONTAINER_NAME mariadb -u USER -pPASSWD DB_NAME < ./DB.sql
 
+# HOSTS
+**/etc/hosts**
+```
+127.0.0.1   blog.opi5
+```
+
 # CHECK
-http://localhost:8000
+http://blog.opi5:8000
+
+# CADDY
+```
+blog.zital.eus {
+    reverse_proxy http://blog.opi5:8000
+}
+```
