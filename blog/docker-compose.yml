@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+
+  mariadb:
+    restart: always
+    build:
+      context: ./mariadb
+    environment:
+      - MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=yes
+      - MYSQL_DATABASE=DB_NAME
+      - MYSQL_USER=USER
+      - MYSQL_PASSWORD=PASSWD
+    networks:
+      - blog
+
+  php-fpm:
+    restart: always
+    build:
+      context: ./php-fpm
+    networks:
+      - blog
+    depends_on:
+      - mariadb
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    volumes:
+      - /home/projects/blog:/app
+
+  nginx:
+    restart: always
+    build:
+      context: ./nginx
+    networks:
+      - blog
+    depends_on:
+      - php-fpm
+    volumes:
+      - /home/projects/blog:/app
+    ports:
+      - "8000:80"
+
+networks:
+  blog:
