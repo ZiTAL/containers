@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+
+  nginx:
+    restart: always
+    build:
+      context: ./nginx
+    networks:
+      - web-static
+    ports:
+      - "8004:80"
+    volumes:
+      - /home/projects:/app
+
+networks:
+  web-static:
