@@ -1,0 +1,7 @@
+http://matematika-js.zital.eus http://matematika-js.opi5 {
+    root * /app/chat
+    file_server
+    log {
+        output stdout
+    }
+}

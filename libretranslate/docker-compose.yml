@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  libretranslate:
+    image: libretranslate/libretranslate:latest
+    container_name: libretranslate
+    user: "0:0"
+    ports:
+      - "5000:5000"
+    environment:
+      HOME: /var/lib/libretranslate
+      LT_LOAD_LANGUAGES: "all"
+      LT_NO_WEB_UI: "false"
+    volumes:
+      - libretranslate-data:/var/lib/libretranslate
+    restart: unless-stopped
+
+volumes:
+  libretranslate-data:
+
+networks:
+  n8n-ollama:
+    external: true

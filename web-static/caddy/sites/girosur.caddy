@@ -1,0 +1,7 @@
+http://girosur.zital.eus http://girosur.opi5 {
+    root * /app/girosur/dist
+    file_server
+    log {
+        output stdout
+    }
+}

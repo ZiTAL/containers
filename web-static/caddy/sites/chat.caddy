@@ -1,0 +1,7 @@
+http://chat.zital.eus http://chat.opi5 {
+    root * /app/chat
+    file_server
+    log {
+        output stdout
+    }
+}

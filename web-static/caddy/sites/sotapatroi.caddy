@@ -1,0 +1,7 @@
+http://sotapatroi.zital.eus http://sotapatroi.opi5 {
+    root * /app/girosur/dist
+    file_server
+    log {
+        output stdout
+    }
+}

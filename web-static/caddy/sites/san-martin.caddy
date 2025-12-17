@@ -1,0 +1,7 @@
+http://san-martin.zital.eus http://san-martin.opi5 {
+    root * /app/chat
+    file_server
+    log {
+        output stdout
+    }
+}

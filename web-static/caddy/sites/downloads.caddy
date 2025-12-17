@@ -1,0 +1,12 @@
+http://downloads.zital.eus http://downloads.opi5 {
+    root * /downloads
+    encode zstd gzip
+
+    file_server browse {
+        precompressed
+    }
+
+    log {
+        output stdout
+    }
+}

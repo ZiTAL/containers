@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: n8n
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_HOST="n8n.opi5"
+      - N8N_PORT=5678
+      - N8N_PROTOCOL="http"
+      - N8N_EDITOR_BASE_URL="https://n8n.zital.eus"
+      - N8N_PUBLIC_BASE_URL="https://n8n.zital.eus"
+
+      # Timezone
+      - TZ=Europe/Madrid
+
+      # IMPORTANT for ARM single-board computers
+      - NODE_FUNCTION_ALLOW_EXTERNAL=*
+
+    volumes:
+      - n8n_data:/home/node/.n8n
+
+    restart: unless-stopped
+
+volumes:
+  n8n_data:
+
+networks:
+  n8n-ollama:
+    external: true
