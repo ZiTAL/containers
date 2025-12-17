@@ -1,6 +1,14 @@
-version: '3'
+#version: '3'
 
 services:
+
+  python:
+    build:
+      context: ./python
+    networks:
+      - bermiotarra
+    volumes:
+      - /home/projects/bermiotarra:/app
 
   node:
     restart: always
@@ -26,3 +34,4 @@ services:
 
 networks:
   bermiotarra:
+    external: true

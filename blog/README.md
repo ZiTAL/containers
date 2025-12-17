@@ -7,6 +7,15 @@
       - /home/projects/blog:/app
 ```
 
+## WP CONFIG
+**wp-config.php**
+```
+define('DB_NAME',     'DB_NAME'); // CHANGE
+define('DB_USER',     'USER');    // CHANGE
+define('DB_PASSWORD', 'PASSWD');  // CHANGE
+define('DB_HOST',     'mariadb'); // NOT CHANGE (same name as docker-compose container name)
+```
+
 ## MARIADB ENV
 ```
     environment:
