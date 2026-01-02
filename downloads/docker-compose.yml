@@ -1,0 +1,22 @@
+services:
+
+  amule:
+    build:
+      context: ./amule
+    networks:
+      - downloads
+    volumes:
+      - /home/projects/downloads/amule:/downloads/amule
+    ports:
+      - "4662:4662/tcp"
+      - "4672:4672/tcp"
+      - "4711:4711/tcp"
+      - "4712:4712/tcp"
+      - "4662:4662/udp"
+      - "4672:4672/udp"
+      - "4711:4711/udp"
+      - "4712:4712/udp"
+
+networks:
+  downloads:
+    external: true

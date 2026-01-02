@@ -6,4 +6,4 @@ RUN apk add --no-cache imagemagick ghostscript pandoc \
 
 RUN pip3 install -U wheel Mastodon.py Pillow
 
-
+CMD ["tail", "-f", "/dev/null"]

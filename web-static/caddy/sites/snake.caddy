@@ -1,5 +1,5 @@
 http://snake.zital.eus http://snake.opi5 {
-    root * /app/girosur/dist
+    root * /app/snakejs
     file_server
     log {
         output stdout

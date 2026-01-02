@@ -1,5 +1,5 @@
 http://matematika-js.zital.eus http://matematika-js.opi5 {
-    root * /app/chat
+    root * /app/matematika-js/dist
     file_server
     log {
         output stdout
