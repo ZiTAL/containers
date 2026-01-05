@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   uptime-kuma:
-    image: louislam/uptime-kuma:latest
+    image: louislam/uptime-kuma:2.0.2
     container_name: uptime-kuma
     restart: always
     ports:
@@ -12,8 +12,9 @@ services:
     environment:
       - TZ=Europe/Madrid  # Set the timezone (change to your preferred local timezone so monitoring times are the same)
       - UMASK=0022  # Set your file permissions manually
-    networks:
-      - kuma_network  # add your own custom network config
+    network_mode: "host"
+#    networks:
+#      - kuma_network  # add your own custom network config
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3001"]
       interval: 30s
@@ -26,6 +27,6 @@ services:
         max-size: "10m"
         max-file: "3"
 
-networks:
-  kuma_network:
-    driver: bridge
+#networks:
+#  kuma_network:
+#    driver: bridge
