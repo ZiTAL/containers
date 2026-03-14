@@ -1,0 +1,12 @@
+:11434 {
+
+    reverse_proxy {
+        to ollama-bat:11434 ollama-bi:11434
+
+        lb_policy round_robin
+
+        health_uri /api/tags
+        health_interval 10s
+        health_timeout 5s
+    }
+}

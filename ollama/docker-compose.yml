@@ -1,21 +1,21 @@
-version: "3.9"
-
 services:
-  ollama:
-    image: ollama/ollama:latest
-    container_name: ollama
+
+  ollama-bat:
+    image: docker.io/alpine/ollama
+    container_name: ollama-bat
+    restart: unless-stopped
+
+  ollama-bi:
+    image: docker.io/alpine/ollama
+    container_name: ollama-bi
+    restart: unless-stopped
+
+  caddy:
+    build: .
+    container_name: ollama-caddy
     restart: unless-stopped
     ports:
-      - "11434:11434"       # Ollama server port
-    volumes:
-      - ollama-data:/home/pi/.ollama   # persistent models/data
-    environment:
-      # Example environment vars (if needed)
-      # OLLAMA_API_KEY: "your_api_key_here"
-
-volumes:
-  ollama-data:
-
-networks:
-  n8n-ollama:
-    external: true
+      - "11434:11434"
+    depends_on:
+      - ollama-bat
+      - ollama-bi
