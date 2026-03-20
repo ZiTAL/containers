@@ -10,10 +10,19 @@ services:
     volumes:
       - /home/projects/bermiotarra:/app
 
-  node:
+#  node:
+#    restart: always
+#    build:
+#      context: ./node
+#    networks:
+#      - bermiotarra
+#    volumes:
+#      - /home/projects/bermiotarra:/app
+
+  deno:
     restart: always
     build:
-      context: ./node
+      context: ./deno
     networks:
       - bermiotarra
     volumes:
@@ -26,7 +35,7 @@ services:
     networks:
       - bermiotarra
     depends_on:
-      - node
+      - deno
     volumes:
       - /home/projects/bermiotarra:/app
     ports:
