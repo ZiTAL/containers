@@ -4,6 +4,6 @@ RUN apk add imagemagick ghostscript texlive texmf-dist-latexextra texmf-dist-fon
 
 WORKDIR /app/web/private
 
-RUN cd /app/web/private && deno run --allow-all build.ts
+RUN cd /app/web/private && deno run --allow-run --allow-read --allow-write --allow-net --allow-env build.ts
 
 CMD ["deno", "run", "--allow-all", "server.ts"]
