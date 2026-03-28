@@ -1,7 +1,5 @@
 FROM docker.io/denoland/deno:alpine-2.7.9
 
-RUN apk add imagemagick ghostscript texlive texmf-dist-latexextra texmf-dist-fontsrecommended texmf-dist-latexrecommended texmf-dist-latex texmf-dist pandoc
-
 WORKDIR /app/web/private
 
 RUN cd /app/web/private && deno run --allow-run --allow-read --allow-write --allow-net --allow-env build.ts
