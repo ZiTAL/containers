@@ -1,4 +1,4 @@
-FROM docker.io/denoland/deno:alpine-2.3.2
+FROM docker.io/denoland/deno:alpine-2.7.9
 
 RUN apk add imagemagick ghostscript texlive texmf-dist-latexextra texmf-dist-fontsrecommended texmf-dist-latexrecommended texmf-dist-latex texmf-dist pandoc
 
