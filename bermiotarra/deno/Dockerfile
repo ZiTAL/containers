@@ -1,17 +1,4 @@
-FROM docker.io/denoland/deno:debian
-
-RUN apt-get update \
-  && apt-get install -y --no-install-recommends \
-       ca-certificates \
-       pandoc \
-       pdftk \
-       ghostscript \
-       imagemagick \
-       texlive-latex-recommended \
-       texlive-latex-extra \
-       texlive-fonts-recommended \
-       texlive-full \
-  && rm -rf /var/lib/apt/lists/*
+FROM docker.io/denoland/deno:alpine-2.7.9
 
 WORKDIR /app/web/private
 
