@@ -1,7 +1,7 @@
 :11434 {
 
     reverse_proxy {
-        to ollama-bat:11434 ollama-bi:11434
+        to ollama-01:11434 ollama-02:11434
 
         lb_policy round_robin
 

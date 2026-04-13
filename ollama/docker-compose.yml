@@ -1,14 +1,18 @@
 services:
 
-  ollama-bat:
+  ollama-01:
     image: docker.io/alpine/ollama
-    container_name: ollama-bat
+    container_name: ollama-01
     restart: unless-stopped
+    volumes:
+      - ./models:/root/.ollama/models
 
-  ollama-bi:
+  ollama-02:
     image: docker.io/alpine/ollama
-    container_name: ollama-bi
+    container_name: ollama-02
     restart: unless-stopped
+    volumes:
+      - ./models:/root/.ollama/models
 
   caddy:
     build: .
@@ -17,5 +21,8 @@ services:
     ports:
       - "11434:11434"
     depends_on:
-      - ollama-bat
-      - ollama-bi
+      - ollama-01
+      - ollama-02
+
+volumes:
+  ollama-models:
